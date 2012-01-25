@@ -4,18 +4,17 @@ include_once 'functions/User.class.php';
 $user = new User();
 $id = $_SESSION['id'];
 if (!$user->get_session()){
-	header("location:functions/login.php");
+	header("location:login.php");
 }
 if (isset ($_GET['q']) && $_GET['q'] == 'logout')	{
 	$user->user_logout();
-	header("location:functions/login.php");
+	header("location:login.php");
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>taskmanager</title>
+<title>taskmate</title>
 <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="jquery-ui-1.7.1.custom.min.js"></script>
 <link rel='stylesheet' href='styles.css' type='text/css' media='all' />
@@ -37,7 +36,7 @@ if (isset ($_GET['q']) && $_GET['q'] == 'logout')	{
 <body>
 <a href="?q=logout">LOGOUT</a>
 <h1> Hello <?php $user->get_fullname($id); ?></h1>
-<ul id="test-list">Waiting for list
+<ul id="test-list">Loading list...
 </ul>
 <form action="functions/addNewItem.php" method = "post">
 <p><input type='text' name='newItem' class ='newItem'/></p>

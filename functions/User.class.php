@@ -41,24 +41,28 @@ class User {
 
 	// Login process
 	public function check_login($emailusername, $password) {
-	$result = mysql_query("SELECT id, password, salt FROM users WHERE email = '$emailusername' or username='$emailusername' LIMIT 1");
-	$user_data = mysql_fetch_assoc($result);
-	$no_rows = mysql_num_rows($result);
-	$hash = hash('sha1', $user_data['salt'] . hash('1', $password) );
-	if($hash != $user_data['password'] || $no_rows != 0){
-		$_SESSION['login'] = true;
-		$_SESSION['id'] = $user_data['id'];
-		return true;
-		}
-		else {
-		return false;
+	$sql = mysql_query("	SELECT id, password, salt 
+							FROM users WHERE email = '$emailusername' 
+							or username='$emailusername' 
+							LIMIT 1	");
+	$user_data = mysql_fetch_assoc($sql);
+	if (!$user_data){
+		echo 'Username does not exist';
+	}else{
+		$hash = hash('sha1', $user_data['salt'] . hash('sha1', $password) );
+		if($hash == $user_data['password']){
+			$_SESSION['login'] = true;
+			$_SESSION['id'] = $user_data['id'];
+		} else {
+			echo 'Username / password wrong';
+			}
 		}
 	}
 	// Getting name
 	public function get_fullname($id)
 	{
-	$result = mysql_query("SELECT name FROM users WHERE id = $id LIMIT 1");
-	$user_data = mysql_fetch_assoc($result);
+	$sql = mysql_query("SELECT name FROM users WHERE id = $id LIMIT 1");
+	$user_data = mysql_fetch_assoc($sql);
 	echo $user_data['name'];
 	}
 	// Getting session 
