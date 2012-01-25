@@ -1,0 +1,66 @@
+* {	margin: 0; padding: 0; }
+
+body {
+	font: 0.9em Arial;
+	padding: 40px;
+	background-color: #d0fa98;
+}
+#wrapper{
+	margin: 0 auto;
+	width: 900 px;
+	background-color: #ffffff;
+	padding: 20px 20px 400px 100px;
+}
+#header{
+	background: url('../images/taskmate-header.png');
+	height:400px;
+}
+#listcontainer{
+	width:400px;
+	border:1px solid #d0fa98;
+}
+#list li {
+	background: #f2ffe1;
+	-moz-border-radius:15px;
+	border-radius:15px;
+	border:1px solid #d0fa98;
+	display: block;
+	padding: 10px;
+	height: 20px;
+	margin-bottom: 3px;
+	list-style: none;
+}
+#list li.draggable.ui-draggable-dragging { 
+	background: #F7FFED; 
+	border: 0px;
+	opacity: 0.5;
+	filter:Alpha(opacity=50); /* IE8 and earlier */
+}
+#list li.ui-state-highlight {
+	background: #FFFFFF; 
+	-moz-border-radius:15px;
+	border-radius:15px;
+	border:1px dashed #d0fa98;
+	display: block;
+	height: 20px; 
+	margin-bottom: 3px;
+}
+
+
+button {
+    padding: 3px;
+    border-color: #666666;
+    background: #fafafa;
+    color: #3b3b3b;
+    border: 1px solid #3b3b3b;
+    font-weight: bold;
+	cursor: pointer;
+}
+
+#newItem{
+	display: none;
+	padding: 20px 0;
+	border-color: #666666;
+	background: #d0fa98;
+
+}

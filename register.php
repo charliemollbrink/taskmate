@@ -1,10 +1,10 @@
 ﻿<?php
-session_start();
-include_once 'functions/User.class.php';
-$user = new User();
-if ($user->get_session()) {
-	header("location:index.php");
-}
+// session_start();
+// include_once 'functions/User.class.php';
+// $user = new User();
+// if ($user->get_session()) {
+	// header("location:index.php");
+// }
 
 ?>
 

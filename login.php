@@ -1,13 +1,10 @@
 ﻿<?php
-session_start();
 include_once 'functions/User.class.php';
 $user = new User();
-if ($user->get_session()) {
-	header("location:index.php");
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$user->check_login($_POST['emailusername'], $_POST['password']);
+	header("location:index.php");
 }
 ?>
 <form method="POST" action="" name="login">

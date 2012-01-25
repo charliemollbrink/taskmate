@@ -48,15 +48,20 @@ class User {
 	$user_data = mysql_fetch_assoc($sql);
 	if (!$user_data){
 		echo 'Username does not exist';
+		//return false;
 	}else{
 		$hash = hash('sha1', $user_data['salt'] . hash('sha1', $password) );
 		if($hash == $user_data['password']){
 			$_SESSION['login'] = true;
 			$_SESSION['id'] = $user_data['id'];
+			return true;
 		} else {
 			echo 'Username / password wrong';
-			}
+			//return false;
 		}
+		
+	}
+	
 	}
 	// Getting name
 	public function get_fullname($id)
@@ -68,13 +73,15 @@ class User {
 	// Getting session 
 	public function get_session() {
 	if (isset($_SESSION['login'])){
-		return $_SESSION['login'];
-	}
+			return $_SESSION['login'];
+		}else {
+			return false;
+		}
 	}
 	// Logout 
 	public function user_logout()
 	{
-	$_SESSION['login'] = FALSE;
+	$_SESSION['login'] = false;
 	session_destroy();
 	}
 

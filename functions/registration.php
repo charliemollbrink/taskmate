@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$register = $user->register_user($new_user_data);
 	if ($register){ 
 		//Registration Success
-		echo 'Registration successful <a href="../login.php">Click here</a> to login';
+		echo 'Registration successful <a href="../?q=login.php">Click here</a> to login';
 	} else { 
 		//Registration Failed
 		echo 'Registration failed. Email or Username already exits please try again';

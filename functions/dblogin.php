@@ -2,7 +2,7 @@
 $db_hostname = 'localhost';
 $db_database = 'shakenmake';
 $db_username = 'root';
-$db_password = 'root';
+$db_password = '';
 
 $db_server = mysql_connect($db_hostname, $db_username, $db_password);
 if (!$db_server){

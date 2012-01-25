@@ -4,7 +4,7 @@ class DBlogin {
 	private $db_hostname = 'localhost';
 	private $db_database = 'shakenmake';
 	private $db_username = 'root';
-	private $db_password = 'root';
+	private $db_password = '';
 
 
 	public function __construct(){
