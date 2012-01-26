@@ -21,4 +21,4 @@ Password
 <input type="password" name="password"/>
 <button type="submit" value="Login">Login</button>
 </form>
-<a href="register.php">Register</a>
+<a href="?q=register">Register</a>

@@ -22,10 +22,15 @@ class User {
 	$username = mysql_real_escape_string($username);
 	$email = mysql_real_escape_string($new_user_data['email']);
 	$name = mysql_real_escape_string($new_user_data['name']);
-	$sql = mysql_query("SELECT id from users WHERE username = '$username' or email = '$email'");
-	$no_rows = mysql_num_rows($sql);
-		if ($no_rows == 0) {
-			$result = mysql_query("INSERT INTO users(username, password, salt, name, email) values ('$username', '$password', '$salt','$name','$email')") or die(mysql_error());
+	$sql = mysql_query("	SELECT COUNT( * ) AS user 
+							FROM users
+							WHERE username = '$username' OR 
+							email = '$email'	");
+	$result = mysql_fetch_assoc($sql);
+		if ($result['user'] == 0) {
+			$result = mysql_query("INSERT INTO users
+								(username, password, salt, name, email) 
+								VALUES ('$username', '$password', '$salt','$name','$email')") or die(mysql_error());
 			return $result;
 			}
 			else {
