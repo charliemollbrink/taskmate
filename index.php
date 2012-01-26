@@ -20,10 +20,10 @@ $user = new User();
 	<div id="header"></div>
 	<?php
 
-	if ($user->get_session()){
+	if ($user->getSession()){
 		include ("home.php");
 		if (isset ($_GET['q']) && $_GET['q'] == 'logout')	{
-			$user->user_logout();
+			$user->userLogout();
 			header("location:index.php?q=login");
 		}
 	} else {

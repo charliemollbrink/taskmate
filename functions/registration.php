@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							'password1'=>$_POST['password1'],
 							'password2'=>$_POST['password2'], 
 							'email'=>$_POST['email']	);
-	$register = $user->register_user($new_user_data);
+	$register = $user->registerUser($new_user_data);
 	if ($register){ 
 		//Registration Success
 		echo 'Registration successful <a href="../?q=login.php">Click here</a> to login';

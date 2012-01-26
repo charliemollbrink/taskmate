@@ -17,13 +17,13 @@ body {
 }
 #listcontainer{
 	width:400px;
-	border:1px solid #d0fa98;
+	/*border:1px solid #d0fa98; */
 }
 #list li {
 	background: #f2ffe1;
 	-moz-border-radius:15px;
 	border-radius:15px;
-	border:1px solid #d0fa98;
+	border:1px solid #3b3b3b;
 	display: block;
 	padding: 10px;
 	height: 20px;
@@ -40,7 +40,7 @@ body {
 	background: #FFFFFF; 
 	-moz-border-radius:15px;
 	border-radius:15px;
-	border:1px dashed #d0fa98;
+	border:1px dashed #3b3b3b;
 	display: block;
 	height: 20px; 
 	margin-bottom: 3px;
@@ -63,4 +63,10 @@ button {
 	border-color: #666666;
 	background: #d0fa98;
 
+}
+img.complete{
+float: right;
+}
+img.delete{
+float: right;
 }

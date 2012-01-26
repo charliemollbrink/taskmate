@@ -7,7 +7,7 @@ class User {
 	$db = new DBlogin();
 	}
 	//Registration process 
-	public function register_user($new_user_data) { // array contains name, username, password1, password2,email
+	public function registerUser($new_user_data) { // array contains name, username, password1, password2,email
 	$username = $new_user_data['username'];
 	$pass1 = $new_user_data['password1'] ;
 	$pass2 = $new_user_data['password2'];
@@ -40,38 +40,44 @@ class User {
 	}
 
 	// Login process
-	public function check_login($emailusername, $password) {
-	$sql = mysql_query("	SELECT id, password, salt 
-							FROM users WHERE email = '$emailusername' 
-							or username='$emailusername' 
-							LIMIT 1	");
-	$user_data = mysql_fetch_assoc($sql);
-	if (!$user_data){
-		echo 'Username does not exist';
-		//return false;
-	}else{
-		$hash = hash('sha1', $user_data['salt'] . hash('sha1', $password) );
-		if($hash == $user_data['password']){
-			$_SESSION['login'] = true;
-			$_SESSION['id'] = $user_data['id'];
-			return true;
-		} else {
-			echo 'Username / password wrong';
-			//return false;
-		}
+	public function checkLogin($emailusername, $password) {
+		$sql = mysql_query("	SELECT id, password, salt 
+								FROM users WHERE email = '$emailusername' 
+								or username='$emailusername' 
+								LIMIT 1	");
+		$user_data = mysql_fetch_assoc($sql);
 		
+		if (!$user_data){
+			echo 'Username does not exist';
+		}else{
+			$hash = hash('sha1', $user_data['salt'] . hash('sha1', $password) );
+			if($hash == $user_data['password']){
+				$_SESSION['login'] = true;
+				$_SESSION['id'] = $user_data['id'];
+				return true;
+			} else {
+				echo 'Username / password wrong';
+			}
+		}
 	}
-	
-	}
-	// Getting name
-	public function get_fullname($id)
+	// Getting stats
+	public function getUserStats($id)
 	{
-	$sql = mysql_query("SELECT name FROM users WHERE id = $id LIMIT 1");
+	$sql = mysql_query("SELECT COUNT( t.id ) AS total_tasks, 
+						SUM( t.status ) AS finished_tasks, 
+						COUNT( t.id ) - SUM( t.status )
+						AS unfinished_tasks, 
+						u.name AS name
+						FROM users AS u
+						LEFT JOIN tasks AS t ON t.user_id = u.id
+						WHERE u.id = $id
+						GROUP BY u.name
+						LIMIT 0 , 1");
 	$user_data = mysql_fetch_assoc($sql);
-	echo $user_data['name'];
+	return $user_data;
 	}
 	// Getting session 
-	public function get_session() {
+	public function getSession() {
 	if (isset($_SESSION['login'])){
 			return $_SESSION['login'];
 		}else {
@@ -79,7 +85,7 @@ class User {
 		}
 	}
 	// Logout 
-	public function user_logout()
+	public function userLogout()
 	{
 	$_SESSION['login'] = false;
 	session_destroy();
