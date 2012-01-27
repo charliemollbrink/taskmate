@@ -5,6 +5,12 @@ body {
 	padding: 40px;
 	background-color: #d0fa98;
 }
+h1{
+	padding: 15px 0;
+}
+h2{
+	padding: 10px 0;
+}
 #wrapper{
 	margin: 0 auto;
 	width: 900 px;
@@ -19,7 +25,7 @@ body {
 	width:400px;
 	/*border:1px solid #d0fa98; */
 }
-#list li {
+#list li, #completedTasks li {
 	background: #f2ffe1;
 	-moz-border-radius:15px;
 	border-radius:15px;
@@ -29,6 +35,9 @@ body {
 	height: 20px;
 	margin-bottom: 3px;
 	list-style: none;
+}
+#completedTasks li {
+	background: #eaebe8;
 }
 #list li.draggable.ui-draggable-dragging { 
 	background: #F7FFED; 
@@ -48,13 +57,16 @@ body {
 
 
 button {
-    padding: 3px;
+    padding: 3px 5px;
+	margin: 5px 0;
     border-color: #666666;
     background: #fafafa;
     color: #3b3b3b;
     border: 1px solid #3b3b3b;
     font-weight: bold;
 	cursor: pointer;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
 }
 
 #newItem{
@@ -64,9 +76,21 @@ button {
 	background: #d0fa98;
 
 }
-img.complete{
-float: right;
+
+img.complete, img.delete{
+	float: right;
+	cursor: pointer;
 }
-img.delete{
-float: right;
+input {
+	border: 1px solid #888;
+	background: #ffffff;
+	padding: 3px 4px;
+	color: #222;
+	margin-bottom: 7px;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+}
+input.newItem{
+	width: 400px;
+
 }

@@ -1,4 +1,4 @@
-﻿
+﻿<a href="./">Back</a>
 <form method="POST" action="functions/registration.php" name='reg' >
 <p>Full Name</p>
 <input type="text" name="name"/>
@@ -10,5 +10,5 @@
 <input type="password" name="password2"/>
 <p>Email</p>
 <input type="text" name="email"/>
-<button type="submit" value="Register">Register</button>
+<p><button type="submit" value="Register">Register</button></p>
 </form> 

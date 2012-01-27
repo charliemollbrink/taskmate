@@ -1,10 +1,9 @@
 ﻿<?php
+include_once 'DBlogin.class.php';
+$db = new DBlogin();
 session_start();
-//include_once 'User.class.php';
-//$user = new User();
 $id = $_SESSION['id'];
-include("dblogin.php");
-//$user_id = $_GET['user'];
+
 $query = "SELECT id, task, position FROM tasks WHERE user_id = $id AND status = 0 ORDER BY position ASC";
 $sql = mysql_query($query);
 while ($row = mysql_fetch_assoc($sql)){
